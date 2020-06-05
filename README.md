@@ -11,3 +11,6 @@ Coming Soon
 
 ## Gameplay
 ![Quiz Gif](http://i.giphy.com/dZjcXgYpWNnnjdEtiy.gif)
+
+## Credit
+Art Asset:- https://www.kenney.nl/assets/minigolf-kit
