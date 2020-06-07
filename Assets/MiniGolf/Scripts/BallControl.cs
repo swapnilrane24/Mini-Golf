@@ -43,6 +43,7 @@ public class BallControl : MonoBehaviour
         if (rgBody.velocity == Vector3.zero && !ballIsStatic)   //if velocity is zero and ballIsStatic is false
         {
             ballIsStatic = true;                                //set ballIsStatic to true
+            LevelManager.instance.ShotTaken();                  //inform LevelManager of shot taken
             rgBody.angularVelocity = Vector3.zero;              //set angular velocity to zero
             areaAffector.SetActive(true);                       //activate areaAffector
         }
@@ -52,7 +53,6 @@ public class BallControl : MonoBehaviour
     {
         if (canShoot)                                               //if canSHoot is true
         {
-            LevelManager.instance.ShotTaken();                      //inform LevelManager of shot taken
             canShoot = false;                                       //set canShoot to false
             ballIsStatic = false;                                   //set ballIsStatic to false
             direction = startPos - endPos;                          //get the direction between 2 vectors from start to end pos
@@ -79,6 +79,7 @@ public class BallControl : MonoBehaviour
 
     public void MouseDownMethod()                                           //method called on mouse down by InputManager
     {
+        if(!ballIsStatic) return;                                           //no mouse detection if ball is moving
         startPos = ClickedPoint();                                          //get the vector in word space
         lineRenderer.gameObject.SetActive(true);                            //activate lineRenderer
         lineRenderer.SetPosition(0, lineRenderer.transform.localPosition);  //set its 1st position
@@ -86,6 +87,7 @@ public class BallControl : MonoBehaviour
 
     public void MouseNormalMethod()                                         //method called by InputManager
     {
+        if(!ballIsStatic) return;                                           //no mouse detection if ball is moving
         endPos = ClickedPoint();                                                //get the vector in word space
         force = Mathf.Clamp(Vector3.Distance(endPos, startPos) * forceModifier, 0, MaxForce);   //calculate the force
         UIManager.instance.PowerBar.fillAmount = force / MaxForce;              //set the powerBar image fill amount
@@ -95,6 +97,7 @@ public class BallControl : MonoBehaviour
 
     public void MouseUpMethod()                                             //method called by InputManager
     {
+        if(!ballIsStatic) return;                                           //no mouse detection if ball is moving
         canShoot = true;                                                    //set canShoot true
         lineRenderer.gameObject.SetActive(false);                           //deactive lineRenderer
     }
