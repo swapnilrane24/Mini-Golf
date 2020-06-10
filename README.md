@@ -7,7 +7,7 @@
 * Click and drag inside ball circle to give direction and force to ball, release to shoot.
 
 ## Complete Tutorial
-Coming Soon
+[![Tutorial](http://img.youtube.com/vi/dIGJ_ltO1Q0/0.jpg)](http://www.youtube.com/watch?v=dIGJ_ltO1Q0)
 
 ## Gameplay
 ![Quiz Gif](http://i.giphy.com/dZjcXgYpWNnnjdEtiy.gif)
